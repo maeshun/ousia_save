@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+@import "compass";
+@import "compass/reset/";
+@import "mixin";
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);	
+
+* {
+	@include box-sizing(border-box);
+}
+
+html {
+	// font-family: 'メイリオ', 'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, sans-serif;
+	font-family: 'Noto Sans Japanese', "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+	font-size: 10px;
+	min-width: 320px;
+	height: 100%;
+	background-color: #fff;
+	color: #333;
+	box-sizing: border-box;
+  line-height: 1.5;
+}
+
+body {
+	position: relative;
+	min-height: 100%;
+	@include fontsize(10);
+	-webkit-text-size-adjust:100%;
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+	}
+  &:visited {
+    color: #333;
+  }
+}
+img {
+	vertical-align: bottom;
+}
+::selection {
+	background: #0d3d6e;
+	color: #fff;
+}
+::-moz-selection {
+	background: #0d3d6e;
+	color: #fff;
+}
+.header {
+}
+.wrapper {
+	width: 100%;
+}
+.main {
+  width: 100%;
+}
+.footer {
+}

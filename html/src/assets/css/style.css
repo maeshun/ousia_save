@@ -1,0 +1,219 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Noto Sans Japanese', "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  font-size: 10px;
+  min-width: 320px;
+  height: 100%;
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  font-size: 10px;
+  font-size: 1rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: #333;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+::selection {
+  background: #0d3d6e;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #0d3d6e;
+  color: #fff;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.main {
+  width: 100%;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.news__header, .about__header, .event__header, .link__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.news__headerText, .about__headerText, .event__headerText, .link__headerText {
+  font-size: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: solid 4px #333;
+}
+
+.newsLatest {
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 768px) {
+  .newsLatest {
+    width: 100%;
+  }
+}
+
+.newsLatest__link {
+  display: block;
+}
+
+.newsLatest__image {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.newsLatest__headline {
+  padding: 14px 20px;
+}
+
+.newsLatest__date {
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.newsLatest__caption {
+  font-size: 14px;
+  font-size: 1.4rem;
+  text-align: justify;
+}
+
+.newsMore__btn {
+  display: block;
+  border: solid 2px #333;
+  text-align: center;
+  padding: 10px 0;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 16px;
+  font-size: 1.6rem;
+  letter-spacing: 0.3em;
+}
+
+.about {
+  background-color: #fdf6e6;
+}
+
+.about__contents {
+  padding: 20px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  text-align: justify;
+}
+
+.eventLatest__link {
+  display: block;
+}
+
+.eventLatest__bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.eventLatest__title {
+  color: #fff;
+  display: block;
+  height: 86%;
+  width: 86%;
+  border: solid 3px #fff;
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 2.5;
+}
+
+.footer {
+  background-color: #000;
+  color: #fff;
+}
