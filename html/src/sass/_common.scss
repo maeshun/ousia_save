@@ -11,8 +11,8 @@
 }
 
 html {
-	// font-family: 'メイリオ', 'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, sans-serif;
-	font-family: 'Noto Sans Japanese', "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  font-family: "Josefin Sans", 'Noto Sans Japanese', "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+	// font-family: 'Noto Sans Japanese', "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
 	font-size: 10px;
 	min-width: 320px;
 	height: 100%;
@@ -49,6 +49,18 @@ img {
 	color: #fff;
 }
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 10px;
+  background-color: #fff;
+  z-index: 2;
+  @include sp {
+    height: 80px;
+  }
+}
+.header__logo {
+
 }
 .wrapper {
 	width: 100%;
@@ -57,4 +69,133 @@ img {
   width: 100%;
 }
 .footer {
+  background-color: #000;
+  color: #fff;
+  @include sp {
+    padding: 60px 0 40px;
+  }
+  @include pc {
+    padding: 60px 10px 90px;
+  }
+}
+.footer__contents {
+  @include pc {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 980px;
+    position: relative;
+    overflow: hidden;
+  }
+}
+.footerLogo {
+  @include sp {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  @include pc {
+    float: left;
+  }
+}
+.footerLink {
+  @include sp {
+    margin-bottom: 30px;
+  }
+  @include pc {
+    // float: left;
+    // margin-left: 33%;
+    margin: 0 auto;
+    width: 260px;
+  }
+}
+.footerLinkContainer {
+  position: relative;
+}
+.footerLinkList {
+  @include sp {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  @include pc {
+    text-align: left;
+    width: 130px;
+    height: 22px;
+    margin-bottom: 10px;
+    &:nth-child(4) {
+      position: absolute;
+      left: 131px;
+      top: 0;
+    }
+    &:nth-child(5) {
+      position: absolute;
+      left: 131px;
+      top: 33px;
+    }
+  }
+}
+.footerLinkList__link {
+  letter-spacing: 0.25;
+  color: #fff;
+  position: relative;
+  padding-left: 1em;
+  @include fontsize(12);
+  transition: all 0.2s linear;
+  &:before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    top: -4px;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.footerContact {
+  @include sp {
+    text-align: center;
+    margin-bottom: 28px;    
+  }
+  @include pc {
+    position: absolute;
+    right: 0;
+    top: 0;
+    // float: right;
+    text-align: left;    
+  }
+}
+.contact__email {
+  margin-bottom: 10px;
+}
+.contact__tel {
+  margin-bottom: 10px;
+}
+
+.copy {
+  @include sp {
+    text-align: center;
+  }
+  @include pc {
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 70px;
+  }
+}
+
+
+.video {
+  position: relative;
+}
+.video__cover {
+  content: "";
+  background: url(../img/check.png) left top repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+video {
+  width: 100%;
+  height: 100%;
 }
