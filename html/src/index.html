@@ -13,18 +13,30 @@
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css" media="all">
 
-<script type="text/javascript" src="/assets/js/jquery-1.11.2.min.js"></script>
 
 </head>
 <body>
 <div class="wrapper">
   <header class="header">
-    <div class="header__logo"><img src="assets/img/footer_logo.jpg"></div>
-    <a href="javascript:void(0);">
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="/"><img src="assets/img/logo.svg"></a>
+      </div>
+      <a href="javascript:void(0);" class="header__menuBtn header__menuBtn--open">
+        <span class="menuLine"></span>
+        <span class="menuLine"></span>
+        <span class="menuLine"></span>
+      </a>
+      <nav class="header__navi header__navi--open">
+        <ul class="naviContainer">
+          <li class="navi"><a href="#news" class="navi__anchor navi__anchor--current">NEWS</a></li>
+          <li class="navi"><a href="#about" class="navi__anchor">ABOUT</a></li>
+          <li class="navi"><a href="#event" class="navi__anchor">EVENT</a></li>
+          <li class="navi"><a href="#link" class="navi__anchor">LINK</a></li>
+          <li class="navi"><a href="" class="navi__anchor">INSTAGRAM</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <div class="main">
@@ -88,10 +100,16 @@
 
     <section class="section about">
       <h2 class="about__header"><span class="about__headerText">ABOUT</span></h2>
-      <h3 class="about__message">SAVE THE ENERGY<br>||<br>エネルギーを守ろう</h3>
+      <h3 class="about__slogan">SAVE THE ENERGY<br>|&nbsp;|<br><img src="/assets/img/text_save.png" class="about__sloganImg"></h3>
       <div class="about__contents">
-      とても身近な問題で有り、海外のファッション業界では既に大きなテーマでもあります。日本ではもっと意識しなくてはならない課題の一つ。本プロジェクトでは、今後も定期的にファッションウィークの舞台でプレゼンテーションを行う予定です。
+        <p class="about__message">
+          とても身近な問題で有り、海外のファッション業界では既に大きなテーマでもあります。日本ではもっと意識しなくてはならない課題の一つ。本プロジェクトでは、今後も定期的にファッションウィークの舞台でプレゼンテーションを行う予定です。
+        </p>
+        <div class="about__movie">
+          <iframe width="640" height="360" src="https://www.youtube.com/embed/ZTIIXKdgYi8" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
+
     </section>
 
     <section class="section event">
@@ -137,7 +155,7 @@
 
   <footer class="footer">
     <div class="footer__contents">
-      <div class="footerLogo"><img src="assets/img/footer_logo.jpg"></div>
+      <div class="footerLogo"><img src="assets/img/logo_white.svg"></div>
       <div class="footerLink">
         <ul class="footerLinkContainer">
           <li class="footerLinkList"><a href="#top" class="footerLinkList__link">NEWS</a></li>
@@ -156,5 +174,9 @@
     </div>
   </footer>
 </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+
 </body>
 </html>
