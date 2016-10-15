@@ -5,6 +5,9 @@
 
 	function init() {
 
+    myMenu.init();
+
+
     if (!isSmartDevice()) {
       console.log("pc");
       // appendOpeningMovie();
@@ -24,13 +27,30 @@
 		// })
 	}
 
+  var myMenu = {
+    "init" : function() {
+      var me = this;
+      $(".header__menuBtn").on("click", function(){
+        $(this).toggleClass("header__menuBtn--open");
+        me.open();
+      })
+    },
+    "open" : function() {
+      // $(".header__navi").toggleClass("header__navi--open");
+      $(".header__navi").fadeIn();
+      console.log("open")
+    }
+  }
+
+
   function appendOpeningMovie() {
     var openingMovieDom = "";
-    openingMovieDom += '<div class="video">';
-    openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay></video>';
+    openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
     openingMovieDom += '<div class="video__cover"></div>';
-    openingMovieDom += '</div>';
-    $("body").append(openingMovieDom);
+    $(".video").append(openingMovieDom);
+    $("video").ready(function(){
+      $(".openingMask").fadeOut(2000);
+    })
   }
 
   function isSmartDevice() {
