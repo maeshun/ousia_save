@@ -15,7 +15,7 @@
 
 
 </head>
-<body>
+<body class="openingVideo">
 <div class="wrapper">
   <header class="header">
     <div class="header__inner">
@@ -42,7 +42,7 @@
   </header>
 
   <div class="main">
-    <section class="section news">
+    <section class="section news" id="news">
       <!-- <h2 class="news__header"><span class="news__headerText">NEWS</span></h2> -->
       <div class="news__contents">
         <article class="newsLatest">
@@ -100,7 +100,7 @@
     </section>
 
 
-    <section class="section about">
+    <section class="section about" id="about">
       <h2 class="about__header"><span class="about__headerText">ABOUT</span></h2>
       <h3 class="about__slogan">SAVE THE ENERGY<br>|&nbsp;|<br><img src="/assets/img/text_save.png" class="about__sloganImg"></h3>
       <div class="about__contents">
@@ -114,7 +114,7 @@
 
     </section>
 
-    <section class="section event">
+    <section class="section event" id="event">
       <h2 class="event__header"><span class="event__headerText">EVENT</span></h2>
       <div class="event__contents">
         <article class="eventLatest">
@@ -142,7 +142,7 @@
       </div>
     </section>
 
-    <section class="section link">
+    <section class="section link" id="link">
       <h2 class="link__header"><span class="link__headerText">LINK</span></h2>
       <div class="link__contents">
         <ul class="linkContainer">
@@ -177,11 +177,13 @@
   </footer>
 </div>
 
-<!--
+
 <div class="openingContent">
-  <div class="video"></div>
+  <div class="video">
+    <div class="video__cover"><div class="videoOver__down"><a href="javascript:void(0);">CONTENT</a></div></div>
+  </div>
   <div class="openingMask"></div>
-    <div class="openingLogo">
+  <div class="openingLogo">
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="openingLogo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -240,10 +242,9 @@
   </g>
 </g>
 </svg>
-
-    </div>
+  </div>
 </div>
--->
+
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script> -->
