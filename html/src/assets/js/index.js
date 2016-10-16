@@ -5,38 +5,35 @@
 
 	function init() {
 
+    // メニューの初期化
     myMenu.init();
 
+    var mousewheelevent = 'onwheel' in document ? 'wheel' : 'onmousewheel' in document ? 'mousewheel' : 'DOMMouseScroll';
+    $(document).on(mousewheelevent,function(e){
+        var num = parseInt($('.wheel').text());
+        e.preventDefault();
+        var delta = e.originalEvent.deltaY ? -(e.originalEvent.deltaY) : e.originalEvent.wheelDelta ? e.originalEvent.wheelDelta : -(e.originalEvent.detail);
+        if (delta < 0){
+            var dNum = num - 1;
+            console.log(dNum);
+        } else {
+            var uNum = num + 1;
+            console.log(uNum);
+        }
+    });
 
+
+    // デバイス判定して表示切り替え
     if (!isSmartDevice()) {
       console.log("pc");
-      appendOpeningMovie();
+      movie.appendOpeningMovie();
     } else {
-      $(".video").css({
-        "background-image": "url(/assets/img/sp_dummy_top.jpg)",
-        "background-size" : "cover",
-        "background-repeat" : "no-repeat",
-        "background-position" : "center center"
-      });
-      $(".openingMask").fadeOut(2000);
+      movie.appendSmartphoneImage();
     }
 
 
     $(".videoOver__down").on("click", function(){
-      $(".video").animate({
-        "top": "-100%",
-        "opacity": "0.5"
-      }, 500, "linear", function(){
-        console.log("れもゔぇ")
-        $("body").removeClass("openingVideo");
-        $(".openingContent").remove();
-      });
-      $("video").animate({
-        "top": "-50%",
-        "opacity": "0.5"
-      }, 500, "linear");
-      $(".openingLogo").fadeOut();
-      // $("body").removeClass("openingVideo");
+      movie.removeMovie();
     })
 
 		// $(".footerLink__list a, .rimNavi__list a").on("click", function(){
@@ -94,16 +91,56 @@
     }
   }
 
+  var movie = {
+    "init": function() {
 
-  function appendOpeningMovie() {
-    var openingMovieDom = "";
-    openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
-    // openingMovieDom += '<div class="video__cover"><div class="videoOver__down"><a href="javascript:void(0);">CONTENT</a></div></div>';
-    $(".video").append(openingMovieDom);
-    $("video").ready(function(){
+    },
+    "appendOpeningMovie" : function() {
+      var openingMovieDom = "";
+      openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
+      // openingMovieDom += '<div class="video__cover"><div class="videoOver__down"><a href="javascript:void(0);">CONTENT</a></div></div>';
+      $(".video").append(openingMovieDom);
+      $("video").ready(function(){
+        $(".openingMask").fadeOut(2000);
+      })
+    }, 
+    "appendSmartphoneImage" : function() {
+      $(".video").css({
+        "background-image": "url(/assets/img/sp_dummy_top.jpg)",
+        "background-size" : "cover",
+        "background-repeat" : "no-repeat",
+        "background-position" : "center center"
+      });
       $(".openingMask").fadeOut(2000);
-    })
+    }, 
+    "removeMovie" : function() {
+      $(".video").animate({
+        "top": "-100%",
+        "opacity": "0.5"
+      }, 500, "linear", function(){
+        console.log("れもゔぇ")
+        $("body").removeClass("openingVideo");
+        $(".openingContent").remove();
+      });
+      $("video").animate({
+        "top": "-50%",
+        "opacity": "0.5"
+      }, 500, "linear");
+      $(".openingLogo").fadeOut();
+      // $("body").removeClass("openingVideo");
+    }
   }
+
+
+  // function appendOpeningMovie() {
+  //   var openingMovieDom = "";
+  //   openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
+  //   // openingMovieDom += '<div class="video__cover"><div class="videoOver__down"><a href="javascript:void(0);">CONTENT</a></div></div>';
+  //   $(".video").append(openingMovieDom);
+  //   $("video").ready(function(){
+  //     $(".openingMask").fadeOut(2000);
+  //   })
+  // }
 
   function isSmartDevice() {
     var agent = navigator.userAgent;
