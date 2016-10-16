@@ -62,14 +62,14 @@ img {
   }
 }
 .header__inner {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
   @include sp {
     padding: 0 10px;
   }
   @include pc {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 }
 .header__logo {
@@ -220,16 +220,20 @@ img {
   }
 }
 .footer__contents {
+  letter-spacing: 0.15em;
   @include pc {
     margin: 0 auto;
     width: 100%;
-    max-width: 980px;
+    max-width: 1000px;
     position: relative;
     overflow: hidden;
   }
+  @include sp {
+    @include fontsize(16);
+  }
 }
 .footerLogo {
-  width: 120px;
+  width: 160px;
   @include sp {
     // text-align: center;
     margin: 0 auto 50px;
@@ -285,6 +289,9 @@ img {
   padding-left: 1em;
   @include fontsize(12);
   transition: all 0.2s linear;
+  @include sp {
+    @include fontsize(16);
+  }
   &:before {
     content: ">";
     position: absolute;
@@ -306,11 +313,14 @@ img {
   }
   @include pc {
     position: absolute;
-    right: 0;
+    right: 36px;
     top: 0;
     // float: right;
     text-align: left;    
   }
+}
+.contact__title {
+  margin-bottom: 10px;
 }
 .contact__email {
   margin-bottom: 10px;
@@ -324,10 +334,9 @@ img {
     text-align: center;
   }
   @include pc {
-    text-align: left;
     position: absolute;
-    right: 20px;
-    top: 40px;
+    right: 0;
+    top: 50px;
     text-align: left;
   }
 }

@@ -120,7 +120,7 @@ img {
 }
 
 .header__inner {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
 }
@@ -131,7 +131,7 @@ img {
 }
 @media only screen and (min-width: 768px) {
   .header__inner {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 }
 
@@ -266,18 +266,27 @@ img {
   }
 }
 
+.footer__contents {
+  letter-spacing: 0.15em;
+}
 @media only screen and (min-width: 768px) {
   .footer__contents {
     margin: 0 auto;
     width: 100%;
-    max-width: 980px;
+    max-width: 1000px;
     position: relative;
     overflow: hidden;
   }
 }
+@media only screen and (max-width: 767px) {
+  .footer__contents {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+}
 
 .footerLogo {
-  width: 120px;
+  width: 160px;
 }
 @media only screen and (max-width: 767px) {
   .footerLogo {
@@ -344,6 +353,12 @@ img {
   font-size: 1.2rem;
   transition: all 0.2s linear;
 }
+@media only screen and (max-width: 767px) {
+  .footerLinkList__link {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+}
 .footerLinkList__link:before {
   content: ">";
   position: absolute;
@@ -367,10 +382,14 @@ img {
 @media only screen and (min-width: 768px) {
   .footerContact {
     position: absolute;
-    right: 0;
+    right: 36px;
     top: 0;
     text-align: left;
   }
+}
+
+.contact__title {
+  margin-bottom: 10px;
 }
 
 .contact__email {
@@ -388,16 +407,15 @@ img {
 }
 @media only screen and (min-width: 768px) {
   .copy {
-    text-align: left;
     position: absolute;
-    right: 20px;
-    top: 40px;
+    right: 0;
+    top: 50px;
     text-align: left;
   }
 }
 
 .section {
-  padding: 100px 0 50px;
+  padding: 100px 0 120px;
 }
 
 .news {
@@ -422,7 +440,7 @@ img {
 @media only screen and (min-width: 768px) {
   .newsLatest__contents {
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 0 auto 150px;
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
@@ -431,11 +449,11 @@ img {
 
 .newsLatest {
   position: relative;
-  margin-bottom: 30px;
 }
 @media only screen and (max-width: 767px) {
   .newsLatest {
     width: 100%;
+    margin-bottom: 30px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -492,15 +510,17 @@ img {
 }
 
 .newsLatest__date {
-  font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 10px;
+  font-size: 1rem;
   margin-bottom: 4px;
+  letter-spacing: 0.2em;
 }
 
 .newsLatest__caption {
-  font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 10px;
+  font-size: 1rem;
   text-align: justify;
+  letter-spacing: 0.2em;
 }
 
 .newsMore__btn, .eventMore__btn {
@@ -548,8 +568,9 @@ img {
 }
 @media only screen and (min-width: 768px) {
   .about__slogan {
-    font-size: 38px;
-    font-size: 3.8rem;
+    font-size: 50px;
+    font-size: 5rem;
+    letter-spacing: 0.25em;
   }
 }
 
@@ -572,7 +593,7 @@ img {
     width: 100%;
     max-width: 900px;
     padding: 0 20px;
-    margin: 0 auto 30px;
+    margin: 0 auto 130px;
   }
 }
 
@@ -585,13 +606,17 @@ img {
   }
 }
 
+.event__header {
+  margin-bottom: 220px;
+}
+
 .event__contents {
   margin-bottom: 50px;
 }
 @media only screen and (min-width: 768px) {
   .event__contents {
     max-width: 1280px;
-    margin: 0 auto 50px;
+    margin: 0 auto 150px;
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
@@ -651,12 +676,14 @@ img {
   z-index: 1;
   color: #fff;
   display: block;
-  height: 86%;
-  width: 86%;
+  height: 83%;
+  width: 83%;
   border: solid 3px #fff;
-  font-size: 18px;
-  font-size: 1.8rem;
-  line-height: 2.5;
+  font-size: 25px;
+  font-size: 2.5rem;
+  letter-spacing: 0.12em;
+  line-height: 2.2;
+  padding: 40px 20px;
 }
 
 .link {
@@ -665,7 +692,7 @@ img {
 @media only screen and (min-width: 768px) {
   .link {
     width: 100%;
-    max-width: 980px;
+    max-width: 1120px;
     margin: 0 auto 150px;
     padding: 100px 10px 0;
   }

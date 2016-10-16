@@ -4,7 +4,7 @@
 @import "mixin";
 
 .section {
-  padding: 100px 0 50px;
+  padding: 100px 0 120px;
 }
 .main {
 
@@ -30,7 +30,7 @@
 .newsLatest__contents {
   @include pc {
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 0 auto 150px;
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
@@ -38,9 +38,9 @@
 }
 .newsLatest {
   position: relative;
-  margin-bottom: 30px;
   @include sp {
     width: 100%;
+    margin-bottom: 30px;
   }
   @include pc {
     width: -webkit-calc(25% - 2px);
@@ -95,12 +95,14 @@
   }
 }
 .newsLatest__date {
-  @include fontsize(14);
+  @include fontsize(10);
   margin-bottom: 4px;
+  letter-spacing: 0.2em;
 }
 .newsLatest__caption {
-  @include fontsize(14);
+  @include fontsize(10);
   text-align: justify;
+  letter-spacing: 0.2em;
 }
 .newsMore {
 
@@ -146,7 +148,8 @@
     @include fontsize(34);
   }
   @include pc {
-    @include fontsize(38);
+    @include fontsize(50);
+    letter-spacing: 0.25em;
   }
 }
 .about__sloganImg {
@@ -164,7 +167,7 @@
     width: 100%;
     max-width: 900px;
     padding: 0 20px;
-    margin: 0 auto 30px;
+    margin: 0 auto 130px;
   }
 }
 .about__movie {
@@ -177,6 +180,7 @@
 }
 .event__header {
   @extend .news__header;
+  margin-bottom: 220px;
 }
 .event__headerText {
   @extend .news__headerText;
@@ -185,7 +189,7 @@
   margin-bottom: 50px;
   @include pc {
     max-width: 1280px;
-    margin: 0 auto 50px;
+    margin: 0 auto 150px;
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
@@ -245,12 +249,14 @@
   z-index: 1;
   color: #fff;
   display: block;
-  height: 86%;
-  width: 86%;
+  height: 83%;
+  width: 83%;
   // background-color: #eee;
   border: solid 3px #fff;
-  @include fontsize(18);
-  line-height: 2.5;
+  @include fontsize(25);
+  letter-spacing: 0.12em;
+  line-height: 2.2;
+  padding: 40px 20px;
 }
 .eventMore {
   // @extend .newsMore;
@@ -262,7 +268,7 @@
   margin-bottom: 100px;
   @include pc {
     width: 100%;
-    max-width: 980px;
+    max-width: 1120px;
     margin: 0 auto 150px;
     padding: 100px 10px 0;
   }
