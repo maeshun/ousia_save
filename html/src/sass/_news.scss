@@ -3,3 +3,68 @@
 @import "compass";
 @import "mixin";
 
+.newsWrapper {
+	// padding-top: 100px;
+  padding-bottom: 195px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.newsContaner {
+  padding-top: 100px;
+  @include sp {
+    margin-bottom: 60px;
+  }
+  @include pc {
+    margin-bottom: 120px;
+  }
+}
+.newsHeader {
+  color: #000;
+  position: relative;
+  overflow: hidden;
+  @include sp {
+    margin-bottom: 30px;
+  }
+}
+.news__title {
+  @include fontsize(16);
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  @include sp {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  @include pc {
+    padding-left: 4px;
+    float: left;
+  }
+}
+.news__date {
+  @include fontsize(10);
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  @include sp {
+    text-align: center;
+  }
+  @include pc {
+    float: right;
+    margin-top: 5px;
+    padding-right: 4px;
+  }
+}
+.news__eyecatch {
+  margin-bottom: 40px;
+  img {
+    width: 100%;
+  }
+}
+.news__contents {
+  padding: 0 10px;
+  @include fontsize(12);
+  letter-spacing: 0.2em;
+  line-height: 3.5;
+  text-align: justify;
+
+  @include wpTextStyle;
+}

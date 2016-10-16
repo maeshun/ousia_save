@@ -31,7 +31,9 @@ body {
 
 a {
 	text-decoration: none;
+  color: #333;
 	&:hover {
+    color: #333;
 	}
   &:visited {
     color: #333;
@@ -72,6 +74,10 @@ img {
 }
 .header__logo {
   width: 120px;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 .header__menuBtn {
   display: block;
@@ -83,7 +89,7 @@ img {
   top: 0;
   z-index: 4;
   @include pc {
-    display: none;
+    // display: none;
   }
 }
 .menuLine {
@@ -107,6 +113,7 @@ img {
   }
   .header__menuBtn--open & {
     width: 40px;
+    background-color: #fff;
     &:nth-child(1) {
       transform-origin: 100% 50%; 
       @include rotate(-45deg);
@@ -126,39 +133,29 @@ img {
   position: absolute;
   top: 15px;
   right: 40px;
-  @include sp {
+  // @include sp {
     display: none;
 
     z-index: 3;
-    background: rgba(#fff, 0.6);
+    background: rgba(#000, 0.6);
     width: 100%;
     height: 100%;
     position: fixed;
     left: 0;
     top: 0;
+  // }
+}
 
-  }
-}
-.header__navi--open {
-  @include sp {
-    display: block;
-    z-index: 3;
-    background: rgba(#fff, 0.6);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
-}
+
+
 .naviContainer {
-  @include pc {
-    width: 500px;
-    display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;    
-  }
-  @include sp {
+  // @include pc {
+  //   width: 500px;
+  //   display: flex;
+  //   -webkit-justify-content: space-between;
+  //   justify-content: space-between;    
+  // }
+  // @include sp {
     height: 100%;
     display: flex;
     -webkit-flex-direction: column;
@@ -166,34 +163,41 @@ img {
     -webkit-justify-content: space-around;
     justify-content: space-around;
     padding: 60px 0;
-  }
+  // }
 }
 .navi {
-  @include sp {
+  // @include sp {
     text-align: center;
-    // margin-bottom: 15px;
-  }
+  // }
 }
 .navi__anchor {
-  @include sp {
+  // @include sp {
     @include fontsize(40);
+    color: #fff;
     font-weight: bold;
-  }
-  @include pc {
-    @include fontsize(12);
-    font-weight: bold;
-    display: inline-block;
-    padding-bottom: 5px;
-    transition: all 0.2s linear;
+    transition: opacity 0.2s linear;
     &:hover {
       opacity: 0.7;
-    }    
-  }
+    }
+    &:visited {
+      color: #fff;      
+    }
+  // }
+  // @include pc {
+  //   @include fontsize(12);
+  //   font-weight: bold;
+  //   display: inline-block;
+  //   padding-bottom: 5px;
+  //   transition: all 0.2s linear;
+  //   &:hover {
+  //     opacity: 0.7;
+  //   }    
+  // }
 }
 .navi__anchor--current {
-  @include pc {
-    border-bottom: solid 4px #333;
-  }
+  // @include pc {
+  //   border-bottom: solid 4px #333;
+  // }
 }
 .wrapper {
 	width: 100%;
@@ -232,6 +236,10 @@ img {
   }
   @include pc {
     float: left;
+  }
+  img {
+    width: 100%;
+    height: auto;
   }
 }
 .footerLink {
@@ -284,7 +292,11 @@ img {
     top: -4px;
   }
   &:hover {
+    color: #fff;
     opacity: 0.7;
+  }
+  &:visited {
+    color: #fff;
   }
 }
 .footerContact {
@@ -314,8 +326,9 @@ img {
   @include pc {
     text-align: left;
     position: absolute;
-    left: 0;
-    top: 70px;
+    right: 20px;
+    top: 40px;
+    text-align: left;
   }
 }
 
