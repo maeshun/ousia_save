@@ -10,16 +10,38 @@
     // メニューの初期化
     myMenu.init();
 
+    myHeader.init();
+
+
+    // var hoge = new Vivus('openingLogo', {
+    //   type: 'delayed',
+    //   duration: 200,
+    //   animTimingFunction: Vivus.EASE
+    // }, function(){
+    //   console.log("hoge")
+    // });
+
+
+    // $("#openingLogo").on("click", function(){
+    //   console.log("あああ")
+    //   hoge.reset().play();
+    // })
+
+
     // topページ
-    if ($("body").hasClass("openingVideo")) {
+    if ($("body").hasClass("top")) {
       // デバイス判定して表示切り替え
       if (!isSmartDevice()) {
         movie.appendOpeningMovie();
       } else {
         movie.appendSmartphoneImage();
-      }      
+      }
+    } else {
+      $(".mask").fadeOut(1500);
     }
 	}
+
+
 
   var myMenu = {
     "init" : function() {
@@ -62,33 +84,34 @@
     "init": function() {
 
     },
-    "removeMovieInit" : function() {
-      var me = this;
-      // クリックでmovie削除
-      $(".videoOver__down").on("click", function(){
-        me.removeMovie();
-      })
+    // "removeMovieInit" : function() {
+    //   var me = this;
+    //   // クリックでmovie削除
+    //   $(".videoOver__down").on("click", function(){
+    //     me.removeMovie();
+    //   })
 
-      // スクロールでmovie削除
-      var mousewheelevent = 'onwheel' in document ? 'wheel' : 'onmousewheel' in document ? 'mousewheel' : 'DOMMouseScroll';
-      $(document).on(mousewheelevent,function(e){
-        me.removeMovie();
-      });
+    //   // スクロールでmovie削除
+    //   var mousewheelevent = 'onwheel' in document ? 'wheel' : 'onmousewheel' in document ? 'mousewheel' : 'DOMMouseScroll';
+    //   $(document).on(mousewheelevent,function(e){
+    //     me.removeMovie();
+    //   });
 
-      $(".video").on("scrollstart", function() {
-        me.removeMovie();        
-      })
-    },
+    //   $(".video").on("scrollstart", function() {
+    //     me.removeMovie();        
+    //   })
+    // },
     "appendOpeningMovie" : function() {
       var me = this;
       var openingMovieDom = "";
       openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
       $(".video").append(openingMovieDom);
       $("video").ready(function(){
-        $(".openingMask").fadeOut(2000, function(){
+        $("video").fadeIn(1000);
+        // $(".openingMask").fadeOut(2000, function(){
           // 動画が再生されてからスクロールイベント取得
-          me.removeMovieInit();
-        });
+          // me.removeMovieInit();
+        // });
       })
     }, 
     "appendSmartphoneImage" : function() {
@@ -101,23 +124,50 @@
       });
       $(".openingMask").fadeOut(2000, function(){
         // 動画が再生されてからスクロールイベント取得
-        me.removeMovieInit();
+        // me.removeMovieInit();
       });
     }, 
-    "removeMovie" : function() {
-      $(".video").animate({
-        "top": "-100%",
-        "opacity": "0.5"
-      }, 500, "linear", function(){
-        $("body").removeClass("openingVideo");
-        $(".openingContent").remove();
+    // "removeMovie" : function() {
+    //   $(".video").animate({
+    //     "top": "-100%",
+    //     "opacity": "0.5"
+    //   }, 500, "linear", function(){
+    //     $("body").removeClass("top");
+    //     $(".openingContent").remove();
+    //   });
+    //   $("video").animate({
+    //     "top": "-50%",
+    //     "opacity": "0.5"
+    //   }, 500, "linear");
+    //   $(".openingLogo").fadeOut();
+    // }
+  }
+
+  var myHeader = {
+    "init" : function() {
+      var me = this;
+      var winHeight = 0
+      winHeight = $(window).height();
+      $(".top .wrapper").css({"margin-top":winHeight});
+      $(window).resize(function(){
+        winHeight = $(this).height();
+        $(".top .wrapper").css({"margin-top":winHeight});
       });
-      $("video").animate({
-        "top": "-50%",
-        "opacity": "0.5"
-      }, 500, "linear");
-      $(".openingLogo").fadeOut();
-    }
+
+      var scrollAmount = 0;
+      $(window).scroll(function(){
+        console.log("winHeight:"+winHeight);
+        if ($(this).scrollTop() > winHeight) {
+          $(".top .header").fadeIn(200);
+        } else {
+          $(".top .header").fadeOut(200);          
+        }
+      })
+
+      // console.log(scrollAmount);
+
+      // this.windowHeight = winHeight;
+    },
   }
 
   function isSmartDevice() {

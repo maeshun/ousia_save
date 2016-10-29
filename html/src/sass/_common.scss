@@ -60,6 +60,9 @@ img {
   @include sp {
     height: 80px;
   }
+  .top & {
+    display: none;
+  }
 }
 .header__inner {
   max-width: 1280px;
@@ -201,6 +204,8 @@ img {
 }
 .wrapper {
 	width: 100%;
+  z-index: 1;
+  background-color: #fff;
 }
 .wrapper--fixed {
   // overflow: hidden;
@@ -340,4 +345,13 @@ img {
     text-align: left;
   }
 }
-
+.mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 20;
+}

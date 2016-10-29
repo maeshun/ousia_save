@@ -24,7 +24,7 @@
 }
 .eventDetail__titleText {
   padding: 0 0 5px 0.15em;
-  border-bottom: solid 3px #333;  
+  border-bottom: solid 3px #333;
 }
 .eventDetail__eyecatch {
   margin-bottom: 40px;
@@ -66,5 +66,120 @@
   &:hover {
     background-color: #333;
     color: #fff;
+  }
+}
+.eventArchiveWrapper {
+  padding-top: 100px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  @include sp {
+    padding-bottom: 100px;
+  }
+}
+.eventArchive__title {
+  @extend .eventDetail__title;
+  @include fontsize(16);
+  margin-bottom: 50px;
+}
+.eventArchive__titleText {
+  @extend .eventDetail__titleText;
+  letter-spacing: 0.25em;
+  display: inline-block;
+  margin-left: 20px;
+}
+.eventArchive___contents {
+  letter-spacing: -0.4em;
+}
+.eventArchive_article {
+  @include sp {
+    margin-bottom: 50px;
+  }
+  @include pc {
+    vertical-align: top;
+    width: 24.75%;
+    margin-right: 0.25%;
+    // width: calc(25% - 2px);
+    display: inline-block;
+    margin-bottom: 100px;
+  }
+}
+.eventArchive__imageWrapper {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+.eventArchive__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  // display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  // height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+  transition: all 0.2s linear;
+  .eventArchive__link:hover & {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0.7;
+  }
+  @include sp {
+
+  }
+}
+.eventArchive__link {
+  display: block;
+  // width: 100%;
+  // overflow: hidden;
+  // background-color: #000;
+  // position: relative;
+  // &:before {
+  //   content: "";
+  //   display: block;
+  //   padding-top: 100%;
+  // }
+}
+.eventArchive__eventTitle {
+  // position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // margin: auto;
+  // z-index: 1;
+  margin-top: 15px;
+  color: #000;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  // height: 83%;
+  // width: 83%;
+  // overflow: hidden;
+  // background-color: #eee;
+  // border: solid 3px #fff;
+  @include fontsize(10);
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  // padding: 20px 10px;
+  @include sp {
+    // @include fontsize(10);
+  }
+
+  transition: all 0.2s linear;
+  .eventArchive__link:hover & {
+    opacity: 0.5;
   }
 }
