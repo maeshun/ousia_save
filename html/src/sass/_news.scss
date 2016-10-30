@@ -41,7 +41,7 @@
   }
 }
 .news__date {
-  @include fontsize(10);
+  @include fontsize(11);
   font-weight: bold;
   letter-spacing: 0.2em;
   @include sp {
@@ -54,6 +54,7 @@
   }
 }
 .news__eyecatch {
+  padding: 0 10px;
   margin-bottom: 40px;
   img {
     width: 100%;
@@ -67,4 +68,26 @@
   text-align: justify;
 
   @include wpTextStyle;
+}
+
+.newsPagenate {
+  margin-bottom: 50px;
+  text-align: center;
+  @include fontsize(16);
+  a {
+    display: inline-block;
+    margin-right: 6px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    transition: opacity 0.2s linear;
+    &:hover {
+      opacity: 0.5;
+    }
+    &.current {
+      color: #aaa;
+    }
+  }
+
 }

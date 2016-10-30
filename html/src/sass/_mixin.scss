@@ -95,5 +95,12 @@ $leapGrey: #525252;
       text-decoration: none;
     }
   }
+  img {
+  	&.size-full, 
+    &.size-large {
+		  width: 100%;
+      height: auto;
+  	}
+  }
   /**** wp article ****/
 }

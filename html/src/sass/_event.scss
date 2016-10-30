@@ -27,13 +27,14 @@
   border-bottom: solid 3px #333;
 }
 .eventDetail__eyecatch {
-  margin-bottom: 40px;
+  padding: 0 30px;
+  margin-bottom: 25px;
   img {
     width: 100%;
   }
 }
 .eventDetail__content{
-  padding: 0 10px;
+  padding: 0 30px;
   @include fontsize(12);
   letter-spacing: 0.2em;
   line-height: 3.5;
@@ -67,9 +68,12 @@
     background-color: #333;
     color: #fff;
   }
+  @include sp {
+    width: 260px;
+  }
 }
 .eventArchiveWrapper {
-  padding-top: 100px;
+  padding-top: 140px;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -86,7 +90,9 @@
   @extend .eventDetail__titleText;
   letter-spacing: 0.25em;
   display: inline-block;
-  margin-left: 20px;
+  @include pc {
+    margin-left: 20px;
+  }
 }
 .eventArchive___contents {
   letter-spacing: -0.4em;

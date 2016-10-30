@@ -37,7 +37,7 @@
         movie.appendSmartphoneImage();
       }
     } else {
-      $(".mask").fadeOut(1500);
+      $(".mask").fadeOut(600);
     }
 	}
 
@@ -72,7 +72,7 @@
     },
     "scroll" : function(targetHash) {
       var me = this;
-      $("html,body").animate({scrollTop: $(targetHash).offset().top}, function() {
+      $("html,body").animate({scrollTop: $(targetHash).offset().top - 100}, function() {
         setTimeout(function(){
           me.close()
         }, 200);
@@ -104,7 +104,7 @@
     "appendOpeningMovie" : function() {
       var me = this;
       var openingMovieDom = "";
-      openingMovieDom += '<video src="assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
+      openingMovieDom += '<video src="/assets/movie/movie24fps640.mp4" type="video/mp4" autoplay loop></video>';
       $(".video").append(openingMovieDom);
       $("video").ready(function(){
         $("video").fadeIn(1000);
@@ -156,7 +156,7 @@
 
       var scrollAmount = 0;
       $(window).scroll(function(){
-        console.log("winHeight:"+winHeight);
+        // console.log("winHeight:"+winHeight);
         if ($(this).scrollTop() > winHeight) {
           $(".top .header").fadeIn(200);
         } else {
