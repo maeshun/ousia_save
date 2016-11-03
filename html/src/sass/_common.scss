@@ -5,6 +5,7 @@
 @import "mixin";
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);	
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700,300italic,400italic,700italic);
 
 * {
 	@include box-sizing(border-box);
@@ -77,6 +78,9 @@ img {
 }
 .header__logo {
   width: 140px;
+  @include sp {    
+    width: 100px;
+  }
   img {
     width: 100%;
     height: auto;
@@ -89,10 +93,11 @@ img {
   // padding: 10px;
   position: absolute;
   right: 15px;
-  top: 0;
+  top: 5px;
   z-index: 4;
-  @include pc {
-    // display: none;
+  @include sp {
+    top: 0;
+    margin-top: -3px;
   }
 }
 .menuLine {
@@ -149,10 +154,35 @@ img {
     left: 0;
     top: 0;
   // }
+    // @include scale(2);
+  // }
+  // animation: menu-close 0.2s linear 0s;
+
+  // transition: transform 0.2s linear;
+  &.header__menu--open {
+    // @include scale(1);
+    display: block;
+    animation: menu-open 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+    -webkit-animation: menu-open 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+  }
 }
 
-
-
+@keyframes menu-open {
+  from{
+    @include scale(2);
+  }
+  to{
+    @include scale(1);
+  }
+}
+@-webkit-keyframes menu-open {
+  from{
+    @include scale(2);
+  }
+  to{
+    @include scale(1);
+  }
+}
 .naviContainer {
   // @include pc {
   //   width: 500px;
@@ -169,7 +199,7 @@ img {
     -webkit-justify-content: space-around;
     justify-content: space-around;
     padding: 60px 0;
-  // }
+
 }
 .navi {
   // @include sp {
@@ -180,9 +210,8 @@ img {
   // @include sp {
     @include fontsize(41);
     color: #fff;
-    font-weight: bold;
     transition: opacity 0.2s linear;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.25em;
     padding: 10px;
     &:hover {
       opacity: 0.7;
@@ -190,7 +219,9 @@ img {
     &:visited {
       color: #fff;
     }
-  // }
+  @include sp {
+    @include fontsize(25);
+  }
   @include pc {
     padding: 10px;
     // @include fontsize(12);
@@ -224,7 +255,7 @@ img {
   background-color: #191919;
   color: #fff;
   @include sp {
-    padding: 60px 0 40px;
+    padding: 70px 0;
   }
   @include pc {
     padding: 60px 10px 90px;
@@ -246,8 +277,8 @@ img {
 .footerLogo {
   width: 160px;
   @include sp {
-    // text-align: center;
-    margin: 0 auto 50px;
+    width: 140px;
+    margin: 0 auto 40px;
   }
   @include pc {
     float: left;
@@ -300,9 +331,9 @@ img {
   padding-left: 1em;
   @include fontsize(12);
   transition: all 0.2s linear;
-  // @include sp {
-    // @include fontsize(16);
-  // }
+  @include sp {
+    @include fontsize(10);
+  }
   &:before {
     content: ">";
     position: absolute;

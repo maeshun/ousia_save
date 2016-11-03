@@ -39,6 +39,12 @@
     } else {
       $(".mask").fadeOut(600);
     }
+
+    // hashを取得してスクロール
+    var hash = location.hash;
+    if (hash) {
+      myMenu.scroll(hash);
+    }
 	}
 
 
@@ -62,17 +68,22 @@
     },
     "open" : function() {
       $(".header__menuBtn").addClass("header__menuBtn--open");
+      $(".header__navi").addClass("header__menu--open");
       $(".header__navi").fadeIn(200);
-      console.log("open")
+      // console.log("open")
     },
     "close" : function() {
       $(".header__menuBtn").removeClass("header__menuBtn--open");
+      // $(".header__navi").removeClass("header__menu--open");
       $(".header__navi").fadeOut(200);
-      console.log("close")      
+      $(".header__navi").animate({
+        "transition":"scale(2,2)"
+      }, 200)
+      // console.log("close")      
     },
     "scroll" : function(targetHash) {
       var me = this;
-      $("html,body").animate({scrollTop: $(targetHash).offset().top - 100}, function() {
+      $("html,body").animate({scrollTop: $(targetHash).offset().top - 78}, function() {
         setTimeout(function(){
           me.close()
         }, 200);
@@ -117,7 +128,7 @@
     "appendSmartphoneImage" : function() {
       var me = this;
       $(".video").css({
-        "background-image": "url(/assets/img/sp_dummy_top.jpg)",
+        "background-image": "url(/assets/img/sp_top.jpg)",
         "background-size" : "cover",
         "background-repeat" : "no-repeat",
         "background-position" : "center center"

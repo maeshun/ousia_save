@@ -4,7 +4,10 @@
 @import "mixin";
 
 .section {
-  padding: 100px 0 120px;
+  padding: 150px 0;
+  @include sp {
+    padding: 80px 0;
+  }
 }
 .top .wrapper {
   margin-top: 1000%;
@@ -21,23 +24,29 @@
   text-align: center;
   // margin-bottom: 30px;
   margin-bottom: 150px;
+  @include sp {
+    margin-bottom: 60px;
+  }
   @include pc {
     margin-bottom: 80px;
   }
 }
 .news__headerText {
   @include fontsize(16);
-  font-weight: bold;
   letter-spacing: 0.25em;
   border-bottom: solid 3px #333;
   padding-left: 0.25em;
   display: inline-block;
   line-height: 2.5em;
+  @include sp {
+    @include fontsize(12);
+    border-bottom: solid 2px #333;
+  }
 }
 .newsLatest__contents {
   @include pc {
     max-width: 1280px;
-    margin: 0 auto 150px;
+    margin: 0 auto 100px;
     display: flex;
     display: -webkit-flex;
     display: -webkit-box;
@@ -50,7 +59,7 @@
   position: relative;
   @include sp {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
     &.nolink {
       display: none;
     }
@@ -80,7 +89,7 @@
   //   padding-top: 100%;
   // }
   @include sp {
-    height: 400px;
+    height: 300px;
   }
 }
 .newsLatest__image {
@@ -106,9 +115,12 @@
 
 }
 .newsLatest__headline {
-  padding: 14px 20px;
+  padding: 14px 12px;
   transition: all 0.2s linear;
   letter-spacing: 0.2em;
+  @include sp {
+    padding: 14px 20px;
+  }
   .newsLatest__link:hover & {
     opacity: 0.7;
   }
@@ -117,6 +129,9 @@
   @include fontsize(10);
   margin-bottom: 4px;
   letter-spacing: 0.2em;
+  @include sp {
+    @include fontsize(9);
+  }
   @include pc {
     margin-bottom: 10px;
   }
@@ -126,6 +141,10 @@
   text-align: justify;
   letter-spacing: 0.2em;
   line-height: 2;
+  @include sp {
+    @include fontsize(8);
+    line-height: 2.5;
+  }
 }
 .newsMore {
 
@@ -135,7 +154,7 @@
   border: solid 2px #333;
   text-align: center;
   padding: 10px 0;
-  margin: 0 auto;
+  margin: 0 auto 100px;
   @include fontsize(16);
   letter-spacing: 0.25em;
   transition: 
@@ -146,7 +165,9 @@
     color: #fff;
   }
   @include sp {
-    width: 80%;
+    width: 75%;
+    margin: 50px auto;
+    @include fontsize(11);
   }
   @include pc {
     width: 340px;
@@ -157,7 +178,10 @@
 }
 .about__header {
   text-align: center;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
+  @include sp {
+    margin-bottom: 50px;
+  }
 }
 .about__headerText {
   @extend .news__headerText;
@@ -171,6 +195,9 @@
     padding: 0 10px;
     // @include fontsize(50);
     @include fontsize(34);
+    letter-spacing: 0.25em;
+    line-height: 2;
+    margin-bottom: 70px;
   }
   @include pc {
     @include fontsize(50);
@@ -178,7 +205,11 @@
   }
 }
 .about__sloganText {
-  margin-bottom: 30px;
+  margin-bottom: 52px;
+  display: block;
+  @include sp {
+    margin-bottom: 10px;
+  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -186,7 +217,7 @@
 .about__sloganImg {
   @include sp {
     width: 100%;
-    max-width: 300px;
+    max-width: 260px;
     margin: 0 auto;
   }
 }
@@ -203,10 +234,17 @@
     padding: 0 60px;
     margin: 0 auto 140px;
   }
+  @include sp {
+    padding: 0 20px;
+    @include fontsize(10);
+    letter-spacing: 0.2em;
+    margin: 0 auto 60px;
+  }
 }
 .about__movie {
   text-align: center;
   position: relative;
+  padding-bottom: 50px;
 }
 .about__movieInner {
   width: 100%;
@@ -218,6 +256,8 @@
   @include sp {
     iframe {
       width: 100%;
+      height: 180px;
+      padding: 0 20px;
     }
   }
 }
@@ -225,15 +265,16 @@
   @include fontsize(12);
   display: block;
   text-align: left;
-  line-height: 2.5em;
+  line-height: 3em;
   letter-spacing: 0.2em;
   @include sp {
+    @include fontsize(10);
     text-align: center;
   }
 }
 .event__header {
   @extend .news__header;
-  margin-bottom: 100px;
+  // margin-bottom: 100px;
 }
 .event__headerText {
   @extend .news__headerText;
@@ -241,7 +282,7 @@
 .event__contents {
   margin-bottom: 50px;
   @include pc {
-    max-width: 1150px;
+    max-width: 1200px;
     margin: 0 auto 150px;
     display: flex;
     display: -webkit-flex;
@@ -319,8 +360,13 @@
   border: solid 3px #fff;
   @include fontsize(30);
   letter-spacing: 0.12em;
-  line-height: 3;
-  padding: 40px 20px;
+  line-height: 2.5;
+  padding: 30px 20px;
+  @include sp {
+    @include fontsize(20);
+    letter-spacing: 0.12em;
+    line-height: 2.5;
+  }
 }
 .eventMore {
   // @extend .newsMore;
@@ -335,6 +381,9 @@
 .link__header {
   text-align: center;
   margin-bottom: 150px;
+  @include sp {
+    margin-bottom: 80px;
+  }
   @include pc {
     margin-bottom: 135px;
   }
@@ -347,13 +396,13 @@
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 100px 50px 150px;
+    padding: 0 50px 150px;
   }  
 }
 .linkContainer {
   // padding: 0 10px;
   @include sp {
-    padding: 0 20px;
+    padding: 0 25px;
   }
 }
 .linkList {
@@ -367,12 +416,13 @@
     margin-bottom: 50px;
   // }
   @include sp {
-    @include fontsize(11);    
+    @include fontsize(8);
+    margin-bottom: 25px;    
   }
 }
 .linkList__link {
   display: block;
-  padding: 15px 0;
+  padding: 8px 0;
   transition: all 0.2s linear;
   // @include sp {
   //   text-align: center;
@@ -396,6 +446,8 @@
   // }
 }
 .linkList__category {
+  @include fontsize(10);
+  letter-spacing: 0.2em;
   // @include sp {
   //   display: block;
   //   @include fontsize(16);
@@ -404,6 +456,9 @@
     display: inline-block;
     float: right;    
   // }
+  @include sp {
+    @include fontsize(8);
+  }
 }
 
 .openingVideo {
@@ -438,12 +493,16 @@
   display: inline-block;
   position: absolute;
   left: 50%;
-  bottom: 40%;
+  bottom: 41%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   @include fontsize(12);
   letter-spacing: 0.15em;
   color: #fff;
+  @include sp {
+    bottom: 43%;
+    @include fontsize(10);
+  }
   &:after {
     content: "";
     display: block;
@@ -458,31 +517,34 @@
     background-repeat: no-repeat;
     animation: scrollDown 1.0s ease -1s infinite;
     -webkit-animation: scrollDown 1.0s ease -1s infinite;
+    @include sp {
+      width: 14px;
+    }
   }
 }
 @keyframes scrollDown {
   0% {
-    bottom: -23px;
+    bottom: -15px;
     opacity: 0;
   }
   50% {
     opacity: 1;
   }
   100% {
-    bottom: -38px;
+    bottom: -25px;
     opacity: 0;
   }
 }
 @-webkit-keyframes scrollDown {
   0% {
-    bottom: -23px;
+    bottom: -15px;
     opacity: 0;
   }
   50% {
     opacity: 1;
   }
   100% {
-    bottom: -38px;
+    bottom: -25px;
     opacity: 0;
   }
 }
@@ -529,4 +591,7 @@ video {
   z-index: 3;
   width: 285px;
   height: 191px;
+  @include sp {
+    width: 195px;
+  }
 }
