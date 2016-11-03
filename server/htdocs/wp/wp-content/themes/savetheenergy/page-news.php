@@ -21,8 +21,10 @@ get_header(); ?>
 
       $args = array(
       		'post_type' => 'post',
+      		'post_status' => 'publish',
       		'paged' => $paged,
       	);
+
 
       // 6件以下に設定された場合、topからのリンクに影響する
       $minPostsPerPage = 1;
