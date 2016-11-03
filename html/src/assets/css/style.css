@@ -1109,6 +1109,7 @@ video {
   z-index: 3;
   width: 285px;
   height: 191px;
+  padding-bottom: 90px;
 }
 @media only screen and (max-width: 767px) {
   .openingLogo {
