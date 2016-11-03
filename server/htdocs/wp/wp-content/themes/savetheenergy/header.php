@@ -18,10 +18,10 @@
 <meta name="description" content="<?= save_get_description(); ?>" />
 <meta name="keywords" content="SAVE THE ENERGY,経済産業省,資源エネルギー庁,Amazon Fashion Week TOKYO,柿本ケンサク,ファッションウィーク" />
 
-<meta property="og:title" content="<?= get_the_title(); ?>" />
+<meta property="og:title" content="<?= save_get_og_title(); ?>" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="<?= save_get_og_image() ?>" />
-<meta property="og:url" content="<?= the_permalink() ?>" />
+<meta property="og:url" content="<?= home_url().$_SERVER["REQUEST_URI"]; ?>" />
 <meta property="og:site_name" content="SAVE THE ENERGY" />
 <meta property="og:description" content="<?= save_get_description(); ?>" />
 

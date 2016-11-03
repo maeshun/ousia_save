@@ -57,9 +57,12 @@ add_filter('excerpt_more', 'save_excerpt_more');
 	詳細ページの場合は詳細の抜粋を返す
 */
 function save_get_description() {
-	$description = "AVE THE ENERGY / とても身近な問題で有り、海外のファッション業界では既に大きなテーマでもあります。日本ではもっと意識しなくてはならない課題の一つ。本プロジェクトでは、今後も定期的にファッションウィークの舞台でプレゼンテーションを行う予定です。";
+	$description = "SAVE THE ENERGY / とても身近な問題で有り、海外のファッション業界では既に大きなテーマでもあります。日本ではもっと意識しなくてはならない課題の一つ。本プロジェクトでは、今後も定期的にファッションウィークの舞台でプレゼンテーションを行う予定です。";
 	if (is_single()) {
-		$description = save_get_the_excerpt(get_the_id());
+		$excerpt = save_get_the_excerpt(get_the_id());
+		if ($excerpt) {
+			$description = $excerpt;
+		}
 	} 
 	return $description;
 }
@@ -79,6 +82,13 @@ function save_get_og_image() {
 	return $ogImage;
 }
 
+function save_get_og_title() {
+	$title = get_bloginfo('name');
+	if (!is_single()) {
+		return $title;
+	}
+	return get_the_title().'｜'.$title;
+}
 
 function save_get_shorted_text($text, $length = 100) {
 	$shortedText = mb_strlen($text) > $length ? mb_substr($text, 0, $length) . "..." : $text;
@@ -107,6 +117,9 @@ function save_setAdminSideMenu() {
   remove_menu_page( 'plugins.php' );                // プラグイン
   remove_menu_page( 'tools.php' );                  // ツール
   remove_menu_page( 'options-general.php' );        // 設定
+  // サブメニュー
+  remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');	// カテゴリ
+  remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag'); // タグ
   // プラグイン
   remove_menu_page( 'cptui_main_menu' );    // CPTUI
   remove_menu_page( 'siteguard' );          // siteguard
