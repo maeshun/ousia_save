@@ -25,6 +25,118 @@
  * @since Twenty Sixteen 1.0
  */
 
+
+/*
+	アイキャッチに設定した画像のurlのみ取得する
+*/
+function save_get_the_thumbnail_url($thumbnail_id, $size = 'medium') {
+	if (!$thumbnail_id) {
+		return "/assets/img/news00.jpg";		
+	}
+	$thumbnail_image_array = wp_get_attachment_image_src( $thumbnail_id , $size );
+	return $thumbnail_image_array[0];
+}
+
+/*
+	抜粋の調整
+*/
+function save_excerpt_length($length) {
+	// 文字数80文字	
+  return 40;
+}
+add_filter('excerpt_length', 'save_excerpt_length');
+
+function save_excerpt_more($more) {
+	// 続く場合
+  // return '...';
+}
+add_filter('excerpt_more', 'save_excerpt_more');
+
+/*
+	ディスクリプションを返す
+	詳細ページの場合は詳細の抜粋を返す
+*/
+function save_get_description() {
+	$description = "AVE THE ENERGY / とても身近な問題で有り、海外のファッション業界では既に大きなテーマでもあります。日本ではもっと意識しなくてはならない課題の一つ。本プロジェクトでは、今後も定期的にファッションウィークの舞台でプレゼンテーションを行う予定です。";
+	if (is_single()) {
+		$description = save_get_the_excerpt(get_the_id());
+	} 
+	return $description;
+}
+
+function save_get_the_excerpt($post_id) {
+  $post = get_post($post_id);
+  $excerpt = $post->post_content;
+  $excerpt = strip_tags(strip_shortcodes($excerpt));
+  return save_get_shorted_text($excerpt, 100);
+}
+
+function save_get_og_image() {
+	$ogImage = home_url() . "/assets/img/og_image.jpg";
+	if (is_single()) {
+		$ogImage = save_get_the_thumbnail_url(get_post_thumbnail_id(), 'large');
+	}
+	return $ogImage;
+}
+
+
+function save_get_shorted_text($text, $length = 100) {
+	$shortedText = mb_strlen($text) > $length ? mb_substr($text, 0, $length) . "..." : $text;
+	return preg_replace('/\r|\n|\r\n/', '', $shortedText);
+}
+
+/**
+ * 管理画面のメニューカスタマイズ
+ */
+function save_setAdminSideMenu() {
+  $user = wp_get_current_user();
+
+  global $menu;
+
+  $menu[5][0] = "NEWS";
+
+  // ousiadevelopはカスタマイズしない
+  if ($user->get('user_login') == "ousiadevelop") {
+  return;
+  }
+
+  // 共通
+  remove_menu_page( 'edit.php?post_type=page' );    // 固定ページ
+  remove_menu_page( 'edit-comments.php' );          // コメント
+  remove_menu_page( 'themes.php' );                 // 外観
+  remove_menu_page( 'plugins.php' );                // プラグイン
+  remove_menu_page( 'tools.php' );                  // ツール
+  remove_menu_page( 'options-general.php' );        // 設定
+  // プラグイン
+  remove_menu_page( 'cptui_main_menu' );    // CPTUI
+  remove_menu_page( 'siteguard' );          // siteguard
+}
+add_action('admin_menu', 'save_setAdminSideMenu', 11);
+
+/*
+	メニューの順番を入れ替える
+*/
+function custom_menu_order($menu_ord) {
+return array(
+        'index.php', // ダッシュボード
+        'edit.php', // 投稿
+        'edit.php?post_type=events',
+        // 'edit.php?post_type=page', // 固定ページ
+        // 'edit-comments.php', // コメント
+        // 'separator1', // 区切り線１
+        'upload.php', // メディア
+        // 'link-manager.php', // リンク
+        // 'users.php', // ユーザー
+        // 'separator2', // 区切り線２
+        // 'themes.php', // テーマ
+        // 'plugins.php', // プラグイン
+        // 'tools.php', // ツール
+        // 'options-general.php', // 設定
+        // 'separator-last' // 区切り線３
+        );
+}
+add_filter('custom_menu_order', 'custom_menu_order');
+add_filter('menu_order', 'custom_menu_order');
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
@@ -93,39 +205,41 @@ function twentysixteen_setup() {
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
 	 */
-	add_theme_support( 'html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-	) );
+	// add_theme_support( 'html5', array(
+	// 	'search-form',
+	// 	'comment-form',
+	// 	'comment-list',
+	// 	'gallery',
+	// 	'caption',
+	// ) );
 
 	/*
 	 * Enable support for Post Formats.
 	 *
 	 * See: https://codex.wordpress.org/Post_Formats
 	 */
-	add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
-		'gallery',
-		'status',
-		'audio',
-		'chat',
-	) );
+	// add_theme_support( 'post-formats', array(
+	// 	'aside',
+	// 	'image',
+	// 	'video',
+	// 	'quote',
+	// 	'link',
+	// 	'gallery',
+	// 	'status',
+	// 	'audio',
+	// 	'chat',
+	// ) );
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	add_editor_style( array( 'css/editor-style.css', twentysixteen_fonts_url() ) );
+	// add_editor_style( array( 'css/editor-style.css', twentysixteen_fonts_url() ) );
+
+	add_image_size( 'top-thumb', 500, 500, true );
 
 	// Indicate widget sidebars can use selective refresh in the Customizer.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	// add_theme_support( 'customize-selective-refresh-widgets' );
 }
 endif; // twentysixteen_setup
 add_action( 'after_setup_theme', 'twentysixteen_setup' );
@@ -200,9 +314,9 @@ function twentysixteen_fonts_url() {
 	$subsets   = 'latin,latin-ext';
 
 	/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'twentysixteen' ) ) {
-		$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
-	}
+	// if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'twentysixteen' ) ) {
+	// 	$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
+	// }
 
 	/* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
 	if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'twentysixteen' ) ) {
@@ -233,7 +347,7 @@ endif;
  * @since Twenty Sixteen 1.0
  */
 function twentysixteen_javascript_detection() {
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+	// echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }
 add_action( 'wp_head', 'twentysixteen_javascript_detection', 0 );
 
@@ -244,46 +358,46 @@ add_action( 'wp_head', 'twentysixteen_javascript_detection', 0 );
  */
 function twentysixteen_scripts() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'twentysixteen-fonts', twentysixteen_fonts_url(), array(), null );
+	// wp_enqueue_style( 'twentysixteen-fonts', twentysixteen_fonts_url(), array(), null );
 
 	// Add Genericons, used in the main stylesheet.
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+	// wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
 
 	// Theme stylesheet.
-	wp_enqueue_style( 'twentysixteen-style', get_stylesheet_uri() );
+	// wp_enqueue_style( 'twentysixteen-style', get_stylesheet_uri() );
 
 	// Load the Internet Explorer specific stylesheet.
-	wp_enqueue_style( 'twentysixteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentysixteen-style' ), '20160816' );
-	wp_style_add_data( 'twentysixteen-ie', 'conditional', 'lt IE 10' );
+	// wp_enqueue_style( 'twentysixteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentysixteen-style' ), '20160816' );
+	// wp_style_add_data( 'twentysixteen-ie', 'conditional', 'lt IE 10' );
 
 	// Load the Internet Explorer 8 specific stylesheet.
-	wp_enqueue_style( 'twentysixteen-ie8', get_template_directory_uri() . '/css/ie8.css', array( 'twentysixteen-style' ), '20160816' );
-	wp_style_add_data( 'twentysixteen-ie8', 'conditional', 'lt IE 9' );
+	// wp_enqueue_style( 'twentysixteen-ie8', get_template_directory_uri() . '/css/ie8.css', array( 'twentysixteen-style' ), '20160816' );
+	// wp_style_add_data( 'twentysixteen-ie8', 'conditional', 'lt IE 9' );
 
 	// Load the Internet Explorer 7 specific stylesheet.
-	wp_enqueue_style( 'twentysixteen-ie7', get_template_directory_uri() . '/css/ie7.css', array( 'twentysixteen-style' ), '20160816' );
-	wp_style_add_data( 'twentysixteen-ie7', 'conditional', 'lt IE 8' );
+	// wp_enqueue_style( 'twentysixteen-ie7', get_template_directory_uri() . '/css/ie7.css', array( 'twentysixteen-style' ), '20160816' );
+	// wp_style_add_data( 'twentysixteen-ie7', 'conditional', 'lt IE 8' );
 
 	// Load the html5 shiv.
-	wp_enqueue_script( 'twentysixteen-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
-	wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );
+	// wp_enqueue_script( 'twentysixteen-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
+	// wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );
 
-	wp_enqueue_script( 'twentysixteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
+	// wp_enqueue_script( 'twentysixteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
 
-	if ( is_singular() && wp_attachment_is_image() ) {
-		wp_enqueue_script( 'twentysixteen-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20160816' );
-	}
+	// if ( is_singular() && wp_attachment_is_image() ) {
+	// 	wp_enqueue_script( 'twentysixteen-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20160816' );
+	// }
 
-	wp_enqueue_script( 'twentysixteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20160816', true );
+	// wp_enqueue_script( 'twentysixteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20160816', true );
 
-	wp_localize_script( 'twentysixteen-script', 'screenReaderText', array(
-		'expand'   => __( 'expand child menu', 'twentysixteen' ),
-		'collapse' => __( 'collapse child menu', 'twentysixteen' ),
-	) );
+	// wp_localize_script( 'twentysixteen-script', 'screenReaderText', array(
+	// 	'expand'   => __( 'expand child menu', 'twentysixteen' ),
+	// 	'collapse' => __( 'collapse child menu', 'twentysixteen' ),
+	// ) );
 }
 add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
 
@@ -350,12 +464,12 @@ function twentysixteen_hex2rgb( $color ) {
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+// require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
